@@ -1,5 +1,3 @@
-package piApproximationMethods;
-
 public class IntegralTaker {
 	
 	double simpsonsRule(long numSubintervals) {  // numerically integrate using Simpson's Rule

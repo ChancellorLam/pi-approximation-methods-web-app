@@ -1,5 +1,3 @@
-package piApproximationMethods;
-
 public class SubintervalQuery {
     int askIfUserWantsToChooseSubintervals() {
         MenuGenerator menu = new MenuGenerator();

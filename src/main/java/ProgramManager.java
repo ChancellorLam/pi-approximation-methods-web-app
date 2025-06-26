@@ -1,4 +1,3 @@
-package piApproximationMethods;
 import java.util.Scanner;
 
 public class ProgramManager {

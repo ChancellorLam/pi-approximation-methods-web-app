@@ -1,5 +1,3 @@
-package piApproximationMethods;
-
 public class MenuGenerator {
 
 	int selectionMenu(String prompt, String[] options) {

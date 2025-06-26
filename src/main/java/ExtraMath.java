@@ -1,4 +1,3 @@
-package piApproximationMethods;
 import java.lang.Math;
 public class ExtraMath {
     static long factorial(int maxFactor) {  // long data type will only support up to 20
