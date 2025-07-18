@@ -1,10 +1,10 @@
 # Maven
-/target/
+pi-approximation-server/target/
 
 # IntelliJ IDEA
 .idea/
-*.iml
-/out/
+pi-approximation-server/*.iml
+pi-approximation-server/out/
 
 # OS-specific (optional)
 .DS_Store
