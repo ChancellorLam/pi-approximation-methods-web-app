@@ -8,7 +8,7 @@ import static com.github.chancellorlam.util.MathUtils.factorial;
 public class ChudnovskyAlgorithmStrategy implements PiApproximationStrategy {
     @Override
     public String getName() {
-        return "ramanujanSato";
+        return "chudnovsky";
     }
 
     @Override
