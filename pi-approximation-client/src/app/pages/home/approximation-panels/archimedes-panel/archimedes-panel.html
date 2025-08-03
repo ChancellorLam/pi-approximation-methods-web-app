@@ -1,0 +1,45 @@
+<h2 class="panel-title">Archimedes' Method</h2>
+<div class="archimedes-visualization">
+  <svg viewBox="0 0 600 600">
+
+    <!-- Inscribed Polygon -->
+    <polygon
+      class="inscribed-polygon-perimeter"
+      [attr.points]="getPolygonPoints(numSides(), radius)"
+    />
+
+    <circle
+      class="circle-perimeter"
+      [attr.cx]="center"
+      [attr.cy]="center"
+      [attr.r]="radius"
+    />
+
+    <!-- Circumscribed Polygon -->
+    <polygon
+      class="circumscribed-polygon-perimeter"
+      [attr.points]="getPolygonPoints(numSides(), radius / Math.cos(Math.PI / numSides()))"
+    />
+
+  </svg>
+</div>
+
+
+<div class="slider">
+  <input
+    id="sidesControlSlider"
+    type="range"
+    min="0"
+    max="11"
+    name="sidesControlSlider"
+    [value]="sliderValue()"
+    (input)="sliderValue.set($any($event.target).valueAsNumber)"
+  />
+  <label class="slider-label">{{ numSides() }}</label>
+</div>
+
+<div class="archimedes-pi-approximation">
+    <span class="archimedes-pi-lower-bound">{{ lowerBound()?.toFixed(9) }}</span>
+    <span class="archimedes-pi-center">&lt; &pi; &lt;</span>
+    <span class="archimedes-pi-upper-bound"> {{ upperBound()?.toFixed(9) }}</span>
+</div>
