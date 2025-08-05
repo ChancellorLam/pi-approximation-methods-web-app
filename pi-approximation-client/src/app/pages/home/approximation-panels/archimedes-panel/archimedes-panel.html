@@ -39,7 +39,15 @@
 </div>
 
 <div class="archimedes-pi-approximation">
-    <span class="archimedes-pi-lower-bound">{{ lowerBound()?.toFixed(9) }}</span>
+    <span class="archimedes-pi-lower-bound">
+      <span class="matching-digits">{{ matchingDigitsClassification().matchingLowerDigits }}</span
+      >{{ matchingDigitsClassification().nonMatchingLowerDigits }}
+    </span>
+
     <span class="archimedes-pi-center">&lt; &pi; &lt;</span>
-    <span class="archimedes-pi-upper-bound"> {{ upperBound()?.toFixed(9) }}</span>
+
+  <span class="archimedes-pi-upper-bound">
+    <span class="matching-digits">{{ matchingDigitsClassification().matchingUpperDigits }}</span
+    >{{ matchingDigitsClassification().nonMatchingUpperDigits }}
+  </span>
 </div>

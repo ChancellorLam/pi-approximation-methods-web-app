@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, computed, OnInit, signal} from '@angular/core';
+import { Component, signal, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 interface ApproximationIteration {
@@ -34,6 +34,36 @@ export class ArchimedesPanel implements OnInit {
   readonly upperBound = computed(() =>
     this.approximationMap.get(this.numSides())?.outerPolygonPerimeter ?? null
   );
+
+  readonly matchingDigitsClassification = computed(()=> {
+    const desiredNumDigits = 9;
+    const lower = this.lowerBound();
+    const upper = this.upperBound();
+
+    if (lower == null || upper == null) {
+      return {
+        matchingLowerDigits: '',
+        nonMatchingLowerDigits: '',
+        matchingUpperDigits: '',
+        nonMatchingUpperDigits: ''
+      };
+    }
+
+    const lowerStr = lower.toFixed(desiredNumDigits);
+    const upperStr = upper.toFixed(desiredNumDigits);
+
+    let numMatchingDigits = 0;
+    while (numMatchingDigits < desiredNumDigits && lowerStr[numMatchingDigits] === upperStr[numMatchingDigits]) {
+      numMatchingDigits++;
+    }
+
+    return {
+      matchingLowerDigits: lowerStr.slice(0, numMatchingDigits),
+      nonMatchingLowerDigits: lowerStr.slice(numMatchingDigits),
+      matchingUpperDigits: upperStr.slice(0, numMatchingDigits),
+      nonMatchingUpperDigits: upperStr.slice(numMatchingDigits)
+    }
+  });
 
   ngOnInit(): void {
     let sinOfCurrentAngle: number = 0.5;
