@@ -25,7 +25,11 @@
 </div>
 
 
-<div class="slider">
+<div class="archimedes-panel-controls">
+  <button class="icon-only-button" (click)="togglePlay()">
+    <span class="material-icons-round">{{ isPlaying() ? 'pause' : 'play_arrow' }}</span>
+  </button>
+
   <input
     id="sidesControlSlider"
     type="range"
@@ -34,7 +38,10 @@
     name="sidesControlSlider"
     [value]="sliderValue()"
     (input)="sliderValue.set($any($event.target).valueAsNumber)"
+    (mousedown)="stopAutoPlay()"
+    (touchstart)="stopAutoPlay()"
   />
+
   <label class="slider-label">{{ numSides() }}</label>
 </div>
 

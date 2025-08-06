@@ -1,4 +1,4 @@
-import { Component, signal, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, computed, effect, OnInit, ChangeDetectionStrategy, DestroyRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 interface ApproximationIteration {
@@ -23,6 +23,9 @@ export class ArchimedesPanel implements OnInit {
   radius = 240;
 
   sliderValue = signal(0);
+  isPlaying = signal(false);
+  intervalId: number | null = null;
+
   approximationMap = new Map<number, ApproximationIteration>();
 
   readonly numSides = computed(() => 6 * Math.pow(2, this.sliderValue()));
@@ -65,6 +68,19 @@ export class ArchimedesPanel implements OnInit {
     }
   });
 
+  constructor(private destroyRef: DestroyRef) {
+    effect(() => {
+      if (this.isPlaying()) {
+        this.startAutoPlay()
+      }
+      else {
+        this.stopAutoPlay();
+      }
+    });
+
+    this.destroyRef.onDestroy(() => this.stopAutoPlay());
+  }
+
   ngOnInit(): void {
     let sinOfCurrentAngle: number = 0.5;
     let cosOfCurrentAngle: number = Math.sqrt(3) / 2;
@@ -89,6 +105,37 @@ export class ArchimedesPanel implements OnInit {
     }
 
     console.log(this.approximationMap);
+  }
+
+  startAutoPlay(): void {
+    if (!this.isPlaying()) {
+      this.isPlaying.set(true);
+    }
+
+    if (this.intervalId !== null) {
+      return;
+    }
+
+    this.intervalId = window.setInterval(() => {
+      const current = this.sliderValue();
+      const next = current === 11 ? 0 : current + 1;
+      this.sliderValue.set(next);
+    }, 1000);
+  }
+
+  stopAutoPlay(): void {
+    if (this.isPlaying()) {
+      this.isPlaying.set(false);
+    }
+
+    if (this.intervalId !== null) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
+  }
+
+  togglePlay(): void {
+    this.isPlaying.update((prev) => !(prev));
   }
 
   getPolygonPoints(sides: number, radius: number): string {
