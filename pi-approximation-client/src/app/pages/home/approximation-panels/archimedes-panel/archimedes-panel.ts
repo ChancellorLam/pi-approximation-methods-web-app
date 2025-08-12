@@ -1,4 +1,4 @@
-import { Component, signal, computed, effect, OnInit, ChangeDetectionStrategy, DestroyRef } from '@angular/core';
+import { Component, signal, computed, effect, inject, OnInit, ChangeDetectionStrategy, DestroyRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 interface ApproximationIteration {
@@ -17,10 +17,12 @@ interface ApproximationIteration {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArchimedesPanel implements OnInit {
+  private destroyRef = inject(DestroyRef);
+
   protected readonly Math = Math;
 
-  center = 300;
-  radius = 240;
+  readonly center = 300;
+  readonly radius = 240;
 
   sliderValue = signal(0);
   isPlaying = signal(false);
@@ -68,7 +70,7 @@ export class ArchimedesPanel implements OnInit {
     }
   });
 
-  constructor(private destroyRef: DestroyRef) {
+  constructor() {
     effect(() => {
       if (this.isPlaying()) {
         this.startAutoPlay()
@@ -82,12 +84,12 @@ export class ArchimedesPanel implements OnInit {
   }
 
   ngOnInit(): void {
-    let sinOfCurrentAngle: number = 0.5;
-    let cosOfCurrentAngle: number = Math.sqrt(3) / 2;
+    let sinOfCurrentAngle = 0.5;
+    let cosOfCurrentAngle = Math.sqrt(3) / 2;
     let tanOfCurrentAngle: number = sinOfCurrentAngle / cosOfCurrentAngle;
 
     for (let i = 0; i < 12; i++) {
-      const sides: number = 6 * Math.pow(2, i);
+      const sides = 6 * Math.pow(2, i);
       const lowerBound: number = sinOfCurrentAngle * sides;
       const upperBound: number = tanOfCurrentAngle * sides;
 
