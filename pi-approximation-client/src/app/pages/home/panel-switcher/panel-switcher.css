@@ -5,8 +5,45 @@
   padding: 0 16px;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
+.panel {
+
+}
+
+.navigation-button-wrapper {
+  width: 100%;
+  max-width: 420px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.left-align-button-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.right-align-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.panel-switcher-buttons {
+  color: #FFFFFF;
+  background-color: #000000;
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}

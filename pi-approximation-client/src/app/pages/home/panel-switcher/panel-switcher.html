@@ -1,3 +1,17 @@
 <div class="panel-container-wrapper">
-  <ng-container *ngComponentOutlet="currentPanel"></ng-container>
+  <div class="panel">
+    <ng-container *ngComponentOutlet="currentPanel"></ng-container>
+  </div>
+  <div class="navigation-button-wrapper">
+    <div class="left-align-button-wrapper">
+      <button class="panel-switcher-buttons">
+        <span class="material-icons-round">chevron_left</span>
+      </button>
+    </div>
+    <div class="right-align-button-wrapper">
+      <button class="panel-switcher-buttons">
+        <span class="material-icons-round">chevron_right</span>
+      </button>
+    </div>
+  </div>
 </div>
