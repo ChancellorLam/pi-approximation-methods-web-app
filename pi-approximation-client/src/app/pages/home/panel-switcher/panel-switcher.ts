@@ -1,4 +1,4 @@
-import {Component, Type} from '@angular/core';
+import { Component, Type } from '@angular/core';
 import { NgComponentOutlet } from '@angular/common';
 import { ArchimedesPanel } from '../approximation-panels/archimedes-panel/archimedes-panel';
 
@@ -14,5 +14,17 @@ export class PanelSwitcher {
 
   get currentPanel() {
     return this.panels[this.currentIndex];
+  }
+
+  previousPanel() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    }
+  }
+
+  nextPanel() {
+    if (this.currentIndex < this.panels.length - 1) {
+      this.currentIndex++;
+    }
   }
 }
