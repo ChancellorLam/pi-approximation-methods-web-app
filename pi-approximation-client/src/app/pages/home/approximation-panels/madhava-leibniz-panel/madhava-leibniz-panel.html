@@ -1,0 +1,19 @@
+<h2 class="panel-title">Madhava-Leibniz Series</h2>
+
+<div #madhavaLeibnizDisplay class="madhava-leibniz-visualization"></div>
+
+<div class="madhava-leibniz-panel-controls">
+  <button class="icon-only-button" (click)="togglePlay()">
+    <span class="material-icons-round">{{ isPlaying() ? 'pause' : 'play_arrow' }}</span>
+  </button>
+
+  <input
+    id="numTermsSlider"
+    type="range"
+    min="0"
+    max="1000000"
+    name="numTermsSlider"
+    [value]="sliderValue()"
+    (input)="sliderValue.set($any($event.target).valueAsNumber)"
+  />
+</div>
