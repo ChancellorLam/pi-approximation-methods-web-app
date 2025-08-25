@@ -83,7 +83,7 @@ export class MadhavaLeibnizPanel {
     }
 
     // restarts only if user clicks play at the end
-    if (this.sliderValue() >= 1000000) {
+    if (this.sliderValue() >= 1500000) {
       this.sliderValue.set(0);
       this.isPlaying.set(true);
     }
@@ -93,14 +93,14 @@ export class MadhavaLeibnizPanel {
     this.intervalId = window.setInterval(() => {
       const current = this.sliderValue();
 
-      if (current > 1000000) {
+      if (current > 1500000) {
         this.stopPlaying();
         return;
       }
 
-      const next = current + 789;
+      const next = current + 4567;
       this.sliderValue.set(next);
-    }, 4);
+    }, 24);
   }
 
   stopPlaying(): void {
