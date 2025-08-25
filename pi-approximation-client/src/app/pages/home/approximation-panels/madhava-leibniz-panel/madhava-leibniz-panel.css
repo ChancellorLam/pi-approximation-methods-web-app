@@ -2,6 +2,7 @@
   color: #FFFFFF;
   width: 90vw;
   max-width: 1200px;
+  text-align: center;
 
   display: flex;
   justify-content: center;
@@ -13,11 +14,13 @@
   background-color: #575757;
   width: 90vw;
   max-width: 420px;
-  padding: 4.8rem 2.4rem;
   margin: 1.2rem auto;
   border-radius: 24px;
-  font-size: 1.244rem;
   text-align: center;
+
+
+  padding: 2.4rem 0;
+  font-size: 0.95rem;
 }
 
 .madhava-leibniz-panel-controls {
@@ -29,6 +32,52 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 360px) {
+  .madhava-leibniz-visualization {
+    width: 90vw;
+    max-width: 480px;
+
+    padding: 2.4rem 0;
+    font-size: 1.05rem;
+  }
+
+  .madhava-leibniz-panel-controls {
+    width: 90vw;
+    max-width: 480px;
+  }
+}
+
+@media (min-width: 390px) {
+  .madhava-leibniz-visualization {
+    width: 90vw;
+    max-width: 480px;
+
+    padding: 2.4rem 0;
+    font-size: 1.175rem;
+  }
+
+  .madhava-leibniz-panel-controls {
+    width: 90vw;
+    max-width: 480px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 720px) {
+  .madhava-leibniz-visualization {
+    width: 100vw;
+    max-width: 480px;
+
+    padding: 3.6rem 2.4rem;
+    font-size: 1.4rem;
+  }
+
+  .madhava-leibniz-panel-controls {
+    width: 100vw;
+    max-width: 480px;
+  }
 }
 
 .icon-only-button {
