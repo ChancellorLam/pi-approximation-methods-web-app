@@ -36,7 +36,6 @@
 
 @media (min-width: 360px) {
   .madhava-leibniz-visualization {
-    width: 90vw;
     max-width: 480px;
 
     padding: 2.4rem 0;
@@ -44,14 +43,12 @@
   }
 
   .madhava-leibniz-panel-controls {
-    width: 90vw;
     max-width: 480px;
   }
 }
 
 @media (min-width: 390px) {
   .madhava-leibniz-visualization {
-    width: 90vw;
     max-width: 480px;
 
     padding: 2.4rem 0;
@@ -59,7 +56,6 @@
   }
 
   .madhava-leibniz-panel-controls {
-    width: 90vw;
     max-width: 480px;
   }
 }
