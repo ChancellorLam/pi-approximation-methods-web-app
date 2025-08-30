@@ -34,6 +34,17 @@
   align-items: center;
 }
 
+.madhava-leibniz-pi-approximation {
+  width: 90vw;
+  max-width: 420px;
+  color: #FFFFFF;
+  margin: 0 auto;
+  padding-top: 12px;
+
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 360px) {
   .madhava-leibniz-visualization {
     max-width: 480px;
@@ -43,6 +54,10 @@
   }
 
   .madhava-leibniz-panel-controls {
+    max-width: 480px;
+  }
+
+  .madhava-leibniz-pi-approximation {
     max-width: 480px;
   }
 }
@@ -58,6 +73,10 @@
   .madhava-leibniz-panel-controls {
     max-width: 480px;
   }
+
+  .madhava-leibniz-pi-approximation {
+    max-width: 480px;
+  }
 }
 
 /* Desktop */
@@ -71,6 +90,11 @@
   }
 
   .madhava-leibniz-panel-controls {
+    width: 100vw;
+    max-width: 480px;
+  }
+
+  .madhava-leibniz-pi-approximation {
     width: 100vw;
     max-width: 480px;
   }

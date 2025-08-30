@@ -33,22 +33,43 @@ export class MadhavaLeibnizPanel {
   madhavaLeibnizDisplayRef!: ElementRef<HTMLElement>;
 
   currentTerm = computed(() => {
-    const n = this.sliderValue();
-    if (n === 0) {
+    // displayedCalculation displays the first four initial terms before currentTerm
+    const n = this.sliderValue() + 4;
+
+    if (n === 4) {
       return '';
     }
-    if (n === 1) {
+    if (n === 5) {
       return '+ \\frac{1}{9}';
     }
-
     const sign = n % 2 === 0 ? '-' : '+';
     const num = n * 2 + 7;
+
     return '+ \\cdots' + sign.toString() + '\\frac{1}{' + num.toString() + '}';
   });
 
   displayedCalculation = computed(() =>
     '\\frac{\\pi}{4} = 1 - \\frac{1}{3} + \\frac{1}{5} - \\frac{1}{7}' + this.currentTerm()
   );
+
+  piApproximation = computed(() => {
+    // keep approximation accurately aligned with displayedCalculation
+    const n = this.sliderValue() + 4;
+
+    let sum = 0;
+    let denominator = 1;
+    for (let i = 0; i < n; i++) {
+      if (i % 2 === 0) {
+        sum = sum + 1 / denominator;
+      }
+      else {
+        sum = sum - 1 / denominator;
+      }
+      denominator = denominator + 2;
+    }
+
+    return sum * 4;
+  });
 
   constructor() {
     effect(() => {
