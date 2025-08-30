@@ -15,5 +15,7 @@
     name="numTermsSlider"
     [value]="sliderValue()"
     (input)="sliderValue.set($any($event.target).valueAsNumber)"
+    (mousedown)="stopPlaying()"
+    (touchstart)="stopPlaying()"
   />
 </div>
