@@ -44,9 +44,9 @@ export class MadhavaLeibnizPanel {
       return '+ \\frac{1}{9}';
     }
     const sign = n % 2 === 0 ? '-' : '+';
-    const num = n * 2 + 7;
+    const denominator = n * 2 - 1;
 
-    return '+ \\cdots' + sign.toString() + '\\frac{1}{' + num.toString() + '}';
+    return '+ \\cdots' + sign.toString() + '\\frac{1}{' + denominator.toString() + '}';
   });
 
   displayedCalculation = computed(() =>
