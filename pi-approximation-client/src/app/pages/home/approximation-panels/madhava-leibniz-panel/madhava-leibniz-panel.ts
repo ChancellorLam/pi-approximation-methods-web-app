@@ -26,7 +26,7 @@ export class MadhavaLeibnizPanel {
   private destroyRef = inject(DestroyRef);
 
   sliderValue = signal(0);
-  maxSliderValue = 1600000;
+  maxSliderValue = 1640000;
   isPlaying = signal(false);
   intervalId: number | null = null;
 
