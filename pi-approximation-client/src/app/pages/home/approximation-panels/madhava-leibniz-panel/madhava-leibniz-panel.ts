@@ -71,6 +71,24 @@ export class MadhavaLeibnizPanel {
     return sum * 4;
   });
 
+  correctPiDigits = computed(() => {
+    const desiredNumDigits = 16;
+    const approximationString = this.piApproximation().toFixed(desiredNumDigits);
+
+    let numMatchingDigits = 0;
+    while (
+      numMatchingDigits < desiredNumDigits &&
+      approximationString[numMatchingDigits] === Math.PI.toString()[numMatchingDigits]
+    ) {
+      numMatchingDigits++;
+    }
+
+    return {
+      matchingDigits: approximationString.slice(0, numMatchingDigits),
+      nonMatchingDigits: approximationString.slice(numMatchingDigits)
+    }
+  });
+
   constructor() {
     effect(() => {
       if (this.isPlaying()) {
