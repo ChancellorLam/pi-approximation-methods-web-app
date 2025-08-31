@@ -26,6 +26,7 @@ export class MadhavaLeibnizPanel {
   private destroyRef = inject(DestroyRef);
 
   sliderValue = signal(0);
+  maxSliderValue = 1600000;
   isPlaying = signal(false);
   intervalId: number | null = null;
 
@@ -122,7 +123,7 @@ export class MadhavaLeibnizPanel {
     }
 
     // restarts only if user clicks play at the end
-    if (this.sliderValue() >= 1500000) {
+    if (this.sliderValue() >= this.maxSliderValue) {
       this.sliderValue.set(0);
       this.isPlaying.set(true);
     }
@@ -132,7 +133,7 @@ export class MadhavaLeibnizPanel {
     this.intervalId = window.setInterval(() => {
       const current = this.sliderValue();
 
-      if (current > 1500000) {
+      if (current > this.maxSliderValue) {
         this.stopPlaying();
         return;
       }

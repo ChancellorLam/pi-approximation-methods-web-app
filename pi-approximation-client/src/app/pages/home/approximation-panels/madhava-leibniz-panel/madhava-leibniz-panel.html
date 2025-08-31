@@ -11,7 +11,7 @@
     id="numTermsSlider"
     type="range"
     min="0"
-    max="1500000"
+    [max]="maxSliderValue"
     name="numTermsSlider"
     [value]="sliderValue()"
     (input)="sliderValue.set($any($event.target).valueAsNumber)"
