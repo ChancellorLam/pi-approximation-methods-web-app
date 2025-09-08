@@ -1,0 +1,19 @@
+<h2 class="panel-title">Ramanujan-Sato Series</h2>
+<div class="panel">
+  <div #ramanujanSatoSeriesMathDisplay class="ramanujan-sato-visualization"></div>
+
+  <app-panel-controls
+    [minSliderValue]="0"
+    [maxSliderValue]="maxSliderValue"
+    [stepSize]="stepSize"
+    [intervalMs]="840"
+    (valueChange)="onTermsChange($event)"
+  ></app-panel-controls>
+
+
+  <div class="ramanujan-sato-pi-approximation">
+    <span>&pi; =&nbsp;</span>
+    <span class="matching-digits">{{ correctPiDigits().matchingDigits }}</span>
+    {{ correctPiDigits().nonMatchingDigits }}
+  </div>
+</div>

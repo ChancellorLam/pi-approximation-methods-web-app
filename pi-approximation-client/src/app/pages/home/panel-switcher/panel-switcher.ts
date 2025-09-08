@@ -2,6 +2,7 @@ import { Component, Type } from '@angular/core';
 import { NgComponentOutlet } from '@angular/common';
 import { ArchimedesPanel } from '../approximation-panels/archimedes-panel/archimedes-panel';
 import { MadhavaLeibnizPanel } from '../approximation-panels/madhava-leibniz-panel/madhava-leibniz-panel';
+import { RamanujanSatoPanel } from '../approximation-panels/ramanujan-sato-panel/ramanujan-sato-panel';
 
 @Component({
   selector: 'app-panel-switcher',
@@ -10,7 +11,7 @@ import { MadhavaLeibnizPanel } from '../approximation-panels/madhava-leibniz-pan
   styleUrl: './panel-switcher.css'
 })
 export class PanelSwitcher {
-  panels: Type<unknown>[] = [ArchimedesPanel, MadhavaLeibnizPanel];
+  panels: Type<unknown>[] = [ArchimedesPanel, MadhavaLeibnizPanel, RamanujanSatoPanel];
   currentIndex = 0;
 
   get currentPanel() {
