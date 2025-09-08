@@ -63,7 +63,7 @@ export class MadhavaLeibnizPanel {
   });
 
   correctPiDigits = computed(() => {
-    const desiredNumDigits = 16;
+    const desiredNumDigits = 17;
     const approximationString = this.piApproximation().toFixed(desiredNumDigits);
 
     let numMatchingDigits = 0;
@@ -76,7 +76,7 @@ export class MadhavaLeibnizPanel {
 
     return {
       matchingDigits: approximationString.slice(0, numMatchingDigits),
-      nonMatchingDigits: approximationString.slice(numMatchingDigits)
+      nonMatchingDigits: approximationString.slice(numMatchingDigits, approximationString.length - 2)
     }
   });
 
