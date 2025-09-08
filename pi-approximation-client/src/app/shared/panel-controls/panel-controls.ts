@@ -60,13 +60,15 @@ export class PanelControls {
 
     this.intervalId = window.setInterval(() => {
       const current = this.sliderValue();
+      const next = current + this.stepSize();
 
-      if (current > this.maxSliderValue()) {
+      if (next >= this.maxSliderValue()) {
+        this.sliderValue.set(this.maxSliderValue());
+        this.valueChange.emit(this.sliderValue());
         this.stopPlaying();
         return;
       }
 
-      const next = current + this.stepSize();
       this.sliderValue.set(next);
       this.valueChange.emit(this.sliderValue());
     }, this.intervalMs());
