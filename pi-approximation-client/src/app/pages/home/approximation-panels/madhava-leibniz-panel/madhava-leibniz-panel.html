@@ -1,27 +1,19 @@
 <h2 class="panel-title">Madhava-Leibniz Series</h2>
+<div class="panel">
+  <div #madhavaLeibnizSeriesMathDisplay class="madhava-leibniz-visualization"></div>
 
-<div #madhavaLeibnizDisplay class="madhava-leibniz-visualization"></div>
+  <app-panel-controls
+    [minSliderValue]="0"
+    [maxSliderValue]="maxSliderValue"
+    [stepSize]="stepSize"
+    [intervalMs]="24"
+    (valueChange)="onTermsChange($event)"
+  ></app-panel-controls>
 
-<div class="madhava-leibniz-panel-controls">
-  <button class="icon-only-button" (click)="togglePlay()">
-    <span class="material-icons-round">{{ isPlaying() ? 'pause' : 'play_arrow' }}</span>
-  </button>
 
-  <input
-    id="numTermsSlider"
-    type="range"
-    min="0"
-    [max]="maxSliderValue"
-    name="numTermsSlider"
-    [value]="sliderValue()"
-    (input)="sliderValue.set($any($event.target).valueAsNumber)"
-    (mousedown)="stopPlaying()"
-    (touchstart)="stopPlaying()"
-  />
-</div>
-
-<div class="madhava-leibniz-pi-approximation">
-  <span>&pi; =&nbsp;</span>
-  <span class="matching-digits">{{ correctPiDigits().matchingDigits }}</span>
-  {{ correctPiDigits().nonMatchingDigits }}
+  <div class="madhava-leibniz-pi-approximation">
+    <span>&pi; =&nbsp;</span>
+    <span class="matching-digits">{{ correctPiDigits().matchingDigits }}</span>
+    {{ correctPiDigits().nonMatchingDigits }}
+  </div>
 </div>

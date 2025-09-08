@@ -1,41 +1,31 @@
-import {
-  Component,
-  signal,
-  computed,
-  effect,
-  inject,
-  ViewChild,
-  ChangeDetectionStrategy,
-  DestroyRef,
-  ElementRef,
-} from '@angular/core';
+import { Component, signal, computed, effect, ViewChild, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import katex from 'katex';
+import { PanelControls } from '../../../../shared/panel-controls/panel-controls';
 
 
 @Component({
   selector: 'app-madhava-leibniz-panel',
-  imports: [],
+  imports: [PanelControls],
   templateUrl: './madhava-leibniz-panel.html',
   styleUrl: './madhava-leibniz-panel.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    class: 'madhava-leibniz-panel'
-  }
+  host: { class: 'madhava-leibniz-panel' }
 })
 export class MadhavaLeibnizPanel {
-  private destroyRef = inject(DestroyRef);
+  numTerms = signal(0);
+  readonly maxSliderValue = 1640000;
+  readonly stepSize = 4567;
 
-  sliderValue = signal(0);
-  maxSliderValue = 1640000;
-  isPlaying = signal(false);
-  intervalId: number | null = null;
-
-  @ViewChild('madhavaLeibnizDisplay', { static: true })
+  @ViewChild('madhavaLeibnizSeriesMathDisplay', { static: true })
   madhavaLeibnizDisplayRef!: ElementRef<HTMLElement>;
+
+  mathRenderEffect = effect(() => {
+    this.renderMath();
+  });
 
   currentTerm = computed(() => {
     // displayedCalculation displays the first four initial terms before currentTerm
-    const n = this.sliderValue() + 4;
+    const n = this.numTerms() + 4;
 
     if (n === 4) {
       return '';
@@ -55,7 +45,7 @@ export class MadhavaLeibnizPanel {
 
   piApproximation = computed(() => {
     // keep approximation accurately aligned with displayedCalculation
-    const n = this.sliderValue() + 4;
+    const n = this.numTerms() + 4;
 
     let sum = 0;
     let denominator = 1;
@@ -90,67 +80,12 @@ export class MadhavaLeibnizPanel {
     }
   });
 
-  constructor() {
-    effect(() => {
-      if (this.isPlaying()) {
-        this.startPlaying()
-      }
-      else {
-        this.stopPlaying();
-      }
-    });
-
-    effect(() => {
-      this.renderMath();
-    });
-
-    this.destroyRef.onDestroy(() => this.stopPlaying());
+  onTermsChange(sliderValue: number): void {
+    this.numTerms.set(sliderValue);
   }
 
   renderMath(): void {
     const el = this.madhavaLeibnizDisplayRef.nativeElement;
     katex.render(this.displayedCalculation(), el, { throwOnError: false });
-  }
-
-  togglePlay(): void {
-    this.isPlaying.update((prev) => !(prev));
-  }
-
-  startPlaying(): void {
-    // prevent multiple intervals
-    if (this.intervalId !== null) {
-      return;
-    }
-
-    // restarts only if user clicks play at the end
-    if (this.sliderValue() >= this.maxSliderValue) {
-      this.sliderValue.set(0);
-      this.isPlaying.set(true);
-    }
-
-    this.isPlaying.set(true);
-
-    this.intervalId = window.setInterval(() => {
-      const current = this.sliderValue();
-
-      if (current > this.maxSliderValue) {
-        this.stopPlaying();
-        return;
-      }
-
-      const next = current + 4567;
-      this.sliderValue.set(next);
-    }, 24);
-  }
-
-  stopPlaying(): void {
-    if (this.isPlaying()) {
-      this.isPlaying.set(false);
-    }
-
-    if (this.intervalId !== null) {
-      clearInterval(this.intervalId);
-      this.intervalId = null;
-    }
   }
 }

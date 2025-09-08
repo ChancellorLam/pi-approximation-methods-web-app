@@ -9,11 +9,19 @@
   align-items: center;
 }
 
+.panel {
+  width: 90vw;
+  max-width: clamp(420px, 90vw, 480px);
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
 .madhava-leibniz-visualization {
   color: white;
   background-color: #575757;
-  width: 90vw;
-  max-width: 420px;
+  width: 100%;
   margin: 1.2rem auto;
   border-radius: 24px;
   text-align: center;
@@ -23,21 +31,8 @@
   font-size: 0.95rem;
 }
 
-.madhava-leibniz-panel-controls {
-  width: 90vw;
-  max-width: 420px;
-  padding-top: 18px;
-  padding-right: 6px;
-  margin: 0.3% auto 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .madhava-leibniz-pi-approximation {
-  width: 90vw;
-  max-width: 420px;
+  width: 100%;
   color: #FFFFFF;
   margin: 0 auto;
   padding-top: 12px;
@@ -48,78 +43,23 @@
 
 @media (min-width: 360px) {
   .madhava-leibniz-visualization {
-    max-width: 480px;
-
     padding: 2.4rem 0;
     font-size: 1.05rem;
-  }
-
-  .madhava-leibniz-panel-controls {
-    max-width: 480px;
-  }
-
-  .madhava-leibniz-pi-approximation {
-    max-width: 480px;
   }
 }
 
 @media (min-width: 390px) {
   .madhava-leibniz-visualization {
-    max-width: 480px;
-
-    padding: 2.4rem 0;
     font-size: 1.175rem;
-  }
-
-  .madhava-leibniz-panel-controls {
-    max-width: 480px;
-  }
-
-  .madhava-leibniz-pi-approximation {
-    max-width: 480px;
   }
 }
 
 /* Desktop */
 @media (min-width: 720px) {
   .madhava-leibniz-visualization {
-    width: 100vw;
-    max-width: 480px;
-
     padding: 3.6rem 2.4rem;
     font-size: 1.4rem;
   }
-
-  .madhava-leibniz-panel-controls {
-    width: 100vw;
-    max-width: 480px;
-  }
-
-  .madhava-leibniz-pi-approximation {
-    width: 100vw;
-    max-width: 480px;
-  }
-}
-
-.icon-only-button {
-  background-color: #252528;
-  border: none;
-  border-radius: 20%;
-  margin-right: 2.4%;
-  padding-left: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.icon-only-button .material-icons-round {
-  color: #A9A9A9;
-  transform: scale(1.5);
-}
-
-#numTermsSlider {
-  width: 90%;
 }
 
 .matching-digits {
