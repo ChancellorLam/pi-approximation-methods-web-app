@@ -1,0 +1,68 @@
+.panel-title {
+  color: #FFFFFF;
+  width: 90vw;
+  max-width: 1200px;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel {
+  width: 90vw;
+  max-width: clamp(420px, 90vw, 540px);
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.chudnovsky-algorithm-visualization {
+  color: white;
+  background-color: #575757;
+  width: 100%;
+  margin: 1.2rem auto;
+  border-radius: 24px;
+  text-align: center;
+
+
+  padding: 2.4rem 0;
+  font-size: 0.7rem;
+}
+
+.chudnovsky-algorithm-pi-approximation {
+  width: 100%;
+  color: #FFFFFF;
+  margin: 0 auto;
+  padding-top: 12px;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 360px) {
+  .chudnovsky-algorithm-visualization {
+    padding: 2.4rem 0;
+    font-size: 0.78rem;
+  }
+}
+
+@media (min-width: 390px) {
+  .chudnovsky-algorithm-visualization {
+    font-size: 0.84rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 720px) {
+  .chudnovsky-algorithm-visualization {
+    padding: 3.6rem 2.4rem;
+    font-size: 1.125rem;
+  }
+}
+
+.matching-digits {
+  color: #6DCC72;
+}

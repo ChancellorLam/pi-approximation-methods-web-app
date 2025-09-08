@@ -3,6 +3,7 @@ import { NgComponentOutlet } from '@angular/common';
 import { ArchimedesPanel } from '../approximation-panels/archimedes-panel/archimedes-panel';
 import { MadhavaLeibnizPanel } from '../approximation-panels/madhava-leibniz-panel/madhava-leibniz-panel';
 import { RamanujanSatoPanel } from '../approximation-panels/ramanujan-sato-panel/ramanujan-sato-panel';
+import { ChudnovskyAlgorithmPanel } from '../approximation-panels/chudnovsky-algorithm-panel/chudnovsky-algorithm-panel';
 
 @Component({
   selector: 'app-panel-switcher',
@@ -11,7 +12,7 @@ import { RamanujanSatoPanel } from '../approximation-panels/ramanujan-sato-panel
   styleUrl: './panel-switcher.css'
 })
 export class PanelSwitcher {
-  panels: Type<unknown>[] = [ArchimedesPanel, MadhavaLeibnizPanel, RamanujanSatoPanel];
+  panels: Type<unknown>[] = [ArchimedesPanel, MadhavaLeibnizPanel, RamanujanSatoPanel, ChudnovskyAlgorithmPanel];
   currentIndex = 0;
 
   get currentPanel() {

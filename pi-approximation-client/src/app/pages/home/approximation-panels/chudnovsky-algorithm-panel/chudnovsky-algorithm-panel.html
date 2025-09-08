@@ -1,0 +1,18 @@
+<h2 class="panel-title">Chudnovsky Algorithm</h2>
+<div class="panel">
+  <div #chudnovskyAlgorithmMathDisplay class="chudnovsky-algorithm-visualization"></div>
+
+  <app-panel-controls
+    [minSliderValue]="0"
+    [maxSliderValue]="maxSliderValue"
+    [stepSize]="stepSize"
+    [intervalMs]="840"
+    (valueChange)="onTermsChange($event)"
+  ></app-panel-controls>
+
+  <div class="chudnovsky-algorithm-pi-approximation">
+    <span>&pi; =&nbsp;</span>
+    <span class="matching-digits">{{ correctPiDigits().matchingDigits }}</span>
+    {{ correctPiDigits().nonMatchingDigits }}
+  </div>
+</div>
