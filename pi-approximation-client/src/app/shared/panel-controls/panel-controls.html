@@ -1,0 +1,20 @@
+<div class="panel-controls">
+  <button type="button" class="icon-only-button" (click)="togglePlay()">
+    <span class="material-icons-round">{{ isPlaying() ? 'pause' : 'play_arrow' }}</span>
+  </button>
+
+  <input
+    type="range"
+    [min]="minSliderValue()"
+    [max]="maxSliderValue()"
+    [value]="sliderValue()"
+    (input)="valueChange.emit($any(($event.target)).valueAsNumber)"
+    (mousedown)="stopPlaying()"
+    (touchstart)="stopPlaying()"
+    class="slider"
+  />
+
+  @if ( label() ) {
+    <label class="slider-label" for="sidesControlSlider">{{ label() }}</label>
+  }
+</div>
