@@ -1,4 +1,4 @@
-import { Component, signal, computed, effect, ViewChild, ChangeDetectionStrategy, ElementRef  } from '@angular/core';
+import { Component, signal, computed, effect, ViewChild, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { PanelControls } from '../../../../shared/panel-controls/panel-controls';
 import katex from 'katex';
 
