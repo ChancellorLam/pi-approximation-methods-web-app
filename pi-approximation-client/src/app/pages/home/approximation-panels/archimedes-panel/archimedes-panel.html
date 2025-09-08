@@ -25,25 +25,15 @@
 </div>
 
 
-<div class="archimedes-panel-controls">
-  <button class="icon-only-button" (click)="togglePlay()">
-    <span class="material-icons-round">{{ isPlaying() ? 'pause' : 'play_arrow' }}</span>
-  </button>
-
-  <input
-    id="sidesControlSlider"
-    type="range"
-    min="0"
-    max="11"
-    name="sidesControlSlider"
-    [value]="sliderValue()"
-    (input)="sliderValue.set($any($event.target).valueAsNumber)"
-    (mousedown)="stopAutoPlay()"
-    (touchstart)="stopAutoPlay()"
-  />
-
-  <label class="slider-label" for="sidesControlSlider">{{ numSides() }}</label>
-</div>
+<app-panel-controls
+  [minSliderValue]="0"
+  [maxSliderValue]="11"
+  [stepSize]="1"
+  [intervalMs]="1000"
+  [playLoop]="true"
+  [label]="numSides()"
+  (valueChange)="onSidesChange($event)"
+></app-panel-controls>
 
 <div class="archimedes-pi-approximation">
     <span class="archimedes-pi-lower-bound">

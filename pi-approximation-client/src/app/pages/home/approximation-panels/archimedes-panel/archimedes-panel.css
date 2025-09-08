@@ -39,32 +39,6 @@
   fill: none;
 }
 
-.archimedes-panel-controls {
-  width: 90vw;
-  max-width: 420px;
-  padding-top: 18px;
-  margin: 0.3% auto 0;
-  padding-right: 6px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#sidesControlSlider {
-  width: 84%;
-}
-
-.slider-label {
-  background-color: #A9A9A9;
-  min-width: 54px;
-  margin-left: 4.8%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .archimedes-pi-approximation {
   color: #FFFFFF;
   width: 90vw;
@@ -99,21 +73,4 @@
 
 .matching-digits {
   color: #6DCC72;
-}
-
-.icon-only-button {
-  background-color: #252528;
-  border: none;
-  border-radius: 20%;
-  margin-right: 2.4%;
-  padding-left: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.icon-only-button .material-icons-round {
-  color: #A9A9A9;
-  transform: scale(1.5);
 }

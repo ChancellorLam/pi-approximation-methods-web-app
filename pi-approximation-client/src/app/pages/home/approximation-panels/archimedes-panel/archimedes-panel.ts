@@ -1,5 +1,5 @@
-import { Component, signal, computed, effect, inject, OnInit, ChangeDetectionStrategy, DestroyRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, signal, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { PanelControls } from '../../../../shared/panel-controls/panel-controls';
 
 interface ApproximationIteration {
   sine: number;
@@ -11,26 +11,18 @@ interface ApproximationIteration {
 
 @Component({
   selector: 'app-archimedes-panel',
-  imports: [FormsModule],
+  imports: [PanelControls],
   templateUrl: './archimedes-panel.html',
   styleUrl: './archimedes-panel.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArchimedesPanel implements OnInit {
-  private destroyRef = inject(DestroyRef);
-
   protected readonly Math = Math;
-
   readonly center = 300;
   readonly radius = 240;
-
-  sliderValue = signal(0);
-  isPlaying = signal(false);
-  intervalId: number | null = null;
-
   approximationMap = new Map<number, ApproximationIteration>();
 
-  readonly numSides = computed(() => 6 * Math.pow(2, this.sliderValue()));
+  numSides = signal(6);
 
   readonly lowerBound = computed(() =>
     this.approximationMap.get(this.numSides())?.innerPolygonPerimeter ?? null
@@ -70,18 +62,6 @@ export class ArchimedesPanel implements OnInit {
     }
   });
 
-  constructor() {
-    effect(() => {
-      if (this.isPlaying()) {
-        this.startAutoPlay()
-      }
-      else {
-        this.stopAutoPlay();
-      }
-    });
-
-    this.destroyRef.onDestroy(() => this.stopAutoPlay());
-  }
 
   ngOnInit(): void {
     let sinOfCurrentAngle = 0.5;
@@ -109,42 +89,15 @@ export class ArchimedesPanel implements OnInit {
     console.log(this.approximationMap);
   }
 
-  startAutoPlay(): void {
-    if (!this.isPlaying()) {
-      this.isPlaying.set(true);
-    }
-
-    if (this.intervalId !== null) {
-      return;
-    }
-
-    this.intervalId = window.setInterval(() => {
-      const current = this.sliderValue();
-      const next = current === 11 ? 0 : current + 1;
-      this.sliderValue.set(next);
-    }, 1000);
-  }
-
-  stopAutoPlay(): void {
-    if (this.isPlaying()) {
-      this.isPlaying.set(false);
-    }
-
-    if (this.intervalId !== null) {
-      clearInterval(this.intervalId);
-      this.intervalId = null;
-    }
-  }
-
-  togglePlay(): void {
-    this.isPlaying.update((prev) => !(prev));
+  onSidesChange(sliderValue: number): void {
+    this.numSides.set(6 * Math.pow(2, sliderValue));
   }
 
   getPolygonPoints(sides: number, radius: number): string {
     const angle: number = (2 * Math.PI) / sides;
     const points: string[] = [];
 
-    // every iteration is a rotation of angle
+    // every iteration is a rotation of size angle
     for (let i = 0; i < sides; i++) {
       const currentAngle: number = i * angle;
 
