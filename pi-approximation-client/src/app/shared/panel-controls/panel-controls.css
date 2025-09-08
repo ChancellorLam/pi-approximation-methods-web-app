@@ -1,11 +1,11 @@
 .panel-controls {
-  width: 90vw;
-  max-width: 420px;
   padding-top: 18px;
   margin: 0.3% auto 0;
-  padding-right: 6px;
+  padding-right: 10px;
+  padding-left: 3px;
 
   display: flex;
+
   justify-content: center;
   align-items: center;
 }
@@ -28,12 +28,12 @@
 }
 
 .slider {
-  width: 84%;
+  flex-grow: 1;
 }
 
 .slider-label {
   background-color: #A9A9A9;
-  min-width: 54px;
+  width: 54px;
   margin-left: 4.8%;
 
   display: flex;
