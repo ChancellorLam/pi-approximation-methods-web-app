@@ -1,6 +1,7 @@
 import { Component, signal, computed, effect, ViewChild, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { PanelControls } from '../../../../shared/panel-controls/panel-controls';
 import katex from 'katex';
+import { getCorrectPiDigits } from '../../../../shared/helpers/pi-utils';
 
 @Component({
   selector: 'app-chudnovsky-algorithm-panel',
@@ -40,21 +41,7 @@ export class ChudnovskyAlgorithmPanel {
   });
 
   correctPiDigits = computed(() => {
-    const desiredNumDigits = 17;
-    const approximationString = this.piApproximation().toFixed(desiredNumDigits);
-
-    let numMatchingDigits = 0;
-    while (
-      numMatchingDigits < desiredNumDigits &&
-      approximationString[numMatchingDigits] === Math.PI.toString()[numMatchingDigits]
-      ) {
-      numMatchingDigits++;
-    }
-
-    return {
-      matchingDigits: approximationString.slice(0, numMatchingDigits),
-      nonMatchingDigits: approximationString.slice(numMatchingDigits, approximationString.length - 2)
-    }
+    return getCorrectPiDigits(this.piApproximation());
   });
 
   onTermsChange(sliderValue: number): void {
