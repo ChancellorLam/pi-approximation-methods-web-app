@@ -66,3 +66,9 @@
 .matching-digits {
   color: #6DCC72;
 }
+
+.description {
+  margin: 2.4% auto 0;
+  max-width: 480px;
+  text-align: center;
+}
